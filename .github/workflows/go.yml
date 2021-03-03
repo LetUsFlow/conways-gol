@@ -17,6 +17,12 @@ jobs:
       uses: actions/setup-go@v2
       with:
         go-version: 1.15
+      
+    - name: Install dependencies
+      run: |
+        go get github.com/go-gl/gl/v4.1-core/gl
+        go get github.com/go-gl/glfw/v3.2/glfw
+        
 
     - name: Build
       run: |
