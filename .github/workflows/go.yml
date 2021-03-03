@@ -29,7 +29,8 @@ jobs:
       run: |
         echo "GO111MODULE=on" >> $GITHUB_ENV
         CGO_ENABLED=1
-        GOOS=linux   GOARCH=amd64 go build -o bin/
+        GOOS=windows GOARCH=amd64 go build -o bin/conways-gol.exe
+        GOOS=linux   GOARCH=amd64 go build -o bin/conways-gol
       
     - name: "Upload Artifacts"
       uses: actions/upload-artifact@v2
