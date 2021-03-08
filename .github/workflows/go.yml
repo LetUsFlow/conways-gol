@@ -34,7 +34,7 @@ jobs:
     - name: "Upload Artifacts"
       uses: actions/upload-artifact@v2
       with:
-        name: artifacts
+        name: artifacts-linux
         path: ./bin/
 
 
@@ -55,12 +55,12 @@ jobs:
         
 
     - name: Build
-      run: GOOS=windows   GOARCH=amd64 go build -o bin/conways-gol.exe
+      run: go build -o bin/conways-gol.exe
       
     - name: "Upload Artifacts"
       uses: actions/upload-artifact@v2
       with:
-        name: artifacts
+        name: artifacts-windows
         path: ./bin/
     - name: Display structure of downloaded files
       run: ls -R
