@@ -66,16 +66,9 @@ func (c *cell) checkState(cells [][]*cell) {
 func (c *cell) liveNeighbors(cells [][]*cell) int {
 	var liveCount int
 	add := func(x, y int) {
-		// If we're at an edge, check the other side of the board.
-		if x == len(cells) {
-			x = 0
-		} else if x == -1 {
-			x = len(cells) - 1
-		}
-		if y == len(cells[x]) {
-			y = 0
-		} else if y == -1 {
-			y = len(cells[x]) - 1
+		// If we're at an edge, count cell as dead.
+		if x == len(cells) || x == -1 || y == len(cells[x]) || y == -1 {
+			return
 		}
 
 		if cells[x][y].alive {
@@ -144,7 +137,7 @@ func makeCells(seed int64, threshold float64) [][]*cell {
 	log.Printf("Using seed=%v, threshold=%v", seed, threshold)
 	rand.Seed(seed)
 
-	cells := make([][]*cell, rows, rows)
+	cells := make([][]*cell, rows, columns)
 	for x := 0; x < rows; x++ {
 		for y := 0; y < columns; y++ {
 			c := newCell(x, y)
