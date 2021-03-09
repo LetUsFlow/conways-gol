@@ -10,8 +10,8 @@ import (
 )
 
 const (
-	width  = 500.0
-	height = 500.0
+	width  = 900.0
+	height = 900.0
 )
 
 var (
