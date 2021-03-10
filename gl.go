@@ -52,7 +52,9 @@ func initGlfw() *glfw.Window {
 // initOpenGL initializes OpenGL and returns an intiialized program.
 func initOpenGL() uint32 {
 	if err := gl.Init(); err != nil {
-		panic(err)
+		if err.Error() != "glGetnCompressedTexImage" {
+			panic(err)
+		}
 	}
 	version := gl.GoStr(gl.GetString(gl.VERSION))
 	log.Println("OpenGL version", version)
