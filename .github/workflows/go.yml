@@ -28,7 +28,9 @@ jobs:
       run: |
         GO111MODULE=on
         CGO_ENABLED=1
-        GOOS=linux   GOARCH=amd64 go build -o bin/conways-gol
+        GOOS=linux
+        GOARCH=amd64
+        go build -o bin/conways-gol
       
     - name: "Upload Artifacts"
       uses: actions/upload-artifact@v2
@@ -48,10 +50,8 @@ jobs:
         go-version: 1.15
       
     - name: Install dependencies
-      run: |
-        go get github.com/go-gl/gl/v4.6-core/gl
-        go get github.com/go-gl/glfw/v3.3/glfw
-        
+      run: go install
+
 
     - name: Build
       run: go build -o bin/conways-gol.exe
